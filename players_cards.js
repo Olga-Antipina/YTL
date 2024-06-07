@@ -59,10 +59,12 @@ let hiddenPlayers = [];
 let firstFlagIndex = 0;
 let smthElse = false;
 let smthPrevious = false;
+let timeFunc;
 
 
 function showElsePlayers() {
     if (smthElse) {
+        clearInterval(timeFunc);
         smthPrevious = true;
         btnImg[0].classList.remove('btn_img_disabled');
         firstFlagIndex += 3;
@@ -72,6 +74,7 @@ function showElsePlayers() {
             carusel.innerHTML += hiddenPlayers[i];
         };
         visibleNum.innerText = +visibleNum.innerText + carusel.childNodes.length;
+        timeFunc = setInterval(timeFuncForDesktop, 4000);
     };
     //ниже проверка с учётом того, что все элементы массива разные (для этого ранее задан id каждой карточке игрока)
     if (content[content.length - 1] === hiddenPlayers[hiddenPlayers.length - 1]) {
@@ -83,6 +86,7 @@ function showElsePlayers() {
 
 function showPreviousPlayers() {
     if (smthPrevious) {
+        clearInterval(timeFunc);
         smthElse = true;
         btnImg[1].classList.remove('btn_img_disabled');
         firstFlagIndex -= 3;
@@ -94,6 +98,7 @@ function showPreviousPlayers() {
         };
         carusel.childNodes.forEach((el) => el.style.animation = 'back-emergence 1.2s');
         visibleNum.innerText = lastFlagIndex;
+        timeFunc = setInterval(timeFuncForDesktop, 4000);
     };
     //ниже проверка с учётом того, что все элементы массива разные (для этого ранее задан id каждой карточке игрока)
     if (content[0] === hiddenPlayers[0]) {
@@ -106,6 +111,7 @@ function showPreviousPlayers() {
 
 function showNextOne() {
     if (smthElse) {
+        clearInterval(timeFunc);
         smthPrevious = true;
         btnImg[0].classList.remove('btn_img_disabled');
         firstFlagIndex += 1;
@@ -113,6 +119,7 @@ function showNextOne() {
         carusel.innerHTML = '';
         carusel.innerHTML += hiddenPlayers;
         visibleNum.innerText = +visibleNum.innerText + 1;
+        timeFunc = setInterval(timeFuncForMobile, 4000);
     };
     //ниже проверка с учётом того, что все элементы массива разные (для этого ранее задан id каждой карточке игрока)
     if (content[content.length - 1] === hiddenPlayers) {
@@ -124,15 +131,16 @@ function showNextOne() {
 
 function showPreviousOne() {
     if (smthPrevious) {
+        clearInterval(timeFunc);
         smthElse = true;
         btnImg[1].classList.remove('btn_img_disabled');
         firstFlagIndex -= 1;
-        // let lastFlagIndex = +visibleNum.innerText - 1;
         hiddenPlayers = content[firstFlagIndex];
         carusel.innerHTML = '';
         carusel.innerHTML += hiddenPlayers;
         carusel.firstChild.style.animation = 'back-emergence 1.2s';
         visibleNum.innerText = +visibleNum.innerText - 1;
+        timeFunc = setInterval(timeFuncForMobile, 4000);
     };
     //ниже проверка с учётом того, что все элементы массива разные (для этого ранее задан id каждой карточке игрока)
     if (content[0] === hiddenPlayers) {
@@ -144,16 +152,49 @@ function showPreviousOne() {
 };
 
 function timeFuncForMobile() {
-
-
+    if (content[content.length - 1] === hiddenPlayers) {
+        firstFlagIndex = -1;
+        smthPrevious = false;
+        // quantityNum.innerText = `${content.length}`;
+        hiddenPlayers = content[firstFlagIndex];
+        visibleNum.innerText = firstFlagIndex + 1;
+        carusel.innerHTML = '';
+        carusel.innerHTML += hiddenPlayers;
+        smthElse = true;
+        btnImg[1].classList.remove('btn_img_disabled');
+        showNextOne();
+        smthPrevious = false;
+        btnImg[0].classList.add('btn_img_disabled');
+        firstFlagIndex = 0;
+    } else {
+        showNextOne();
+    };
 };
 
 function timeFuncForDesktop() {
-
+    if (content[content.length - 1] === hiddenPlayers[hiddenPlayers.length - 1]) {
+        firstFlagIndex = -3;
+        smthPrevious = false;
+        hiddenPlayers = content.slice(firstFlagIndex, firstFlagIndex + 3);
+        visibleNum.innerText = hiddenPlayers.length;
+        carusel.innerHTML = '';
+        for (let i = 0; i < hiddenPlayers.length; i++) {
+            carusel.innerHTML += hiddenPlayers[i];
+        };
+        smthElse = true;
+        btnImg[1].classList.remove('btn_img_disabled');
+        showElsePlayers();
+        smthPrevious = false;
+        btnImg[0].classList.add('btn_img_disabled');
+        firstFlagIndex = 0;
+    } else {
+        showElsePlayers();
+    };
 };
 
 function mobilePlayersStyles(isMobileSize) {
     if (isMobileSize) {
+        clearInterval(timeFunc);
         hiddenPlayers = [];
         firstFlagIndex = 0;
         smthElse = false;
@@ -175,6 +216,7 @@ function mobilePlayersStyles(isMobileSize) {
                 carusel.innerHTML += hiddenPlayers;
                 smthElse = true;
                 btnImg[1].classList.remove('btn_img_disabled');
+                timeFunc = setInterval(timeFuncForMobile, 4000);
             };
         } else {
             document.querySelector('.main__players_title_btns').innerHTML = '';
@@ -194,6 +236,7 @@ function mobilePlayersStyles(isMobileSize) {
             leftBtn.addEventListener('click', showPreviousOne);
         };
     } else {
+        clearInterval(timeFunc);
         hiddenPlayers = [];
         firstFlagIndex = 0;
         smthElse = false;
@@ -219,6 +262,7 @@ function mobilePlayersStyles(isMobileSize) {
                 };
                 smthElse = true;
                 btnImg[1].classList.remove('btn_img_disabled');
+                timeFunc = setInterval(timeFuncForDesktop, 4000);
             };
         } else {
             document.querySelector('.main__players_title_btns').innerHTML = '';
