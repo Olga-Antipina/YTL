@@ -298,6 +298,7 @@ main {
 .main__players_carusel {
     margin-top: 60px;
     height: 500px;
+    width: 1366px;
     overflow: hidden;
     display: flex;
     justify-content: center;
