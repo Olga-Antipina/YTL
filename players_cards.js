@@ -96,7 +96,7 @@ function showPreviousPlayers() {
         for (let i = 0; i < hiddenPlayers.length; i++) {
             carusel.innerHTML += hiddenPlayers[i];
         };
-        carusel.childNodes.forEach((el) => el.style.animation = 'back-emergence 1.2s');
+        carusel.childNodes.forEach((el) => el.style.animation = 'back-emergence 4s');
         visibleNum.innerText = lastFlagIndex;
         timeFunc = setInterval(timeFuncForDesktop, 4000);
     };
@@ -138,7 +138,7 @@ function showPreviousOne() {
         hiddenPlayers = content[firstFlagIndex];
         carusel.innerHTML = '';
         carusel.innerHTML += hiddenPlayers;
-        carusel.firstChild.style.animation = 'back-emergence 1.2s';
+        carusel.firstChild.style.animation = 'back-emergence 4s';
         visibleNum.innerText = +visibleNum.innerText - 1;
         timeFunc = setInterval(timeFuncForMobile, 4000);
     };
