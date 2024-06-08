@@ -268,13 +268,14 @@ main {
 }
 
 .main__players {
-    margin: 0 72px 140px 72px;
+    margin: 0 0 102px 0;
 }
 
 .main__players_title {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 0 72px 0 72px;
 }
 
 .main__players_title_btns {
@@ -296,8 +297,8 @@ main {
 
 .main__players_carusel {
     margin-top: 60px;
-    height: 462px;
-    /* overflow-x: hidden; */
+    height: 500px;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: flex-start;
