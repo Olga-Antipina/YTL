@@ -155,7 +155,6 @@ function timeFuncForMobile() {
     if (content[content.length - 1] === hiddenPlayers) {
         firstFlagIndex = -1;
         smthPrevious = false;
-        // quantityNum.innerText = `${content.length}`;
         hiddenPlayers = content[firstFlagIndex];
         visibleNum.innerText = firstFlagIndex + 1;
         carusel.innerHTML = '';
@@ -284,9 +283,9 @@ function mobilePlayersStyles(isMobileSize) {
     };
 };
 
-mobilePlayersStyles(window.matchMedia('(max-width: 740px)').matches);
+mobilePlayersStyles(window.matchMedia('(max-width: 480px)').matches);
 
-window.matchMedia('(max-width: 740px)').addEventListener('change', function (event) {
+window.matchMedia('(max-width: 480px)').addEventListener('change', function (event) {
     mobilePlayersStyles(event.matches);
 });
 

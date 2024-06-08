@@ -76,8 +76,8 @@ function mobileStagesStyles(isMobileSize) {
     };
 };
 
-mobileStagesStyles(window.matchMedia('(max-width: 740px)').matches);
+mobileStagesStyles(window.matchMedia('(max-width: 480px)').matches);
 
-window.matchMedia('(max-width: 740px)').addEventListener('change', function (event) {
+window.matchMedia('(max-width: 480px)').addEventListener('change', function (event) {
     mobileStagesStyles(event.matches);
 });

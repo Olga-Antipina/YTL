@@ -24,6 +24,7 @@ button {
     color: inherit;
     background-color: transparent;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 }
 
 footer {
@@ -712,8 +713,7 @@ main {
 }
 
 
-/* сделать потом на 480px */
-@media (max-width: 740px) {
+@media (max-width: 480px) {
 
     body,
     footer,
@@ -831,6 +831,35 @@ main {
     .red_span+br,
     .postscriptum br {
         display: inline-block;
+    }    
+
+    .info_btn_support,
+    .info_btn_about {
+        width: 335px;
+        height: 47px;
+    }
+
+    .info_btn_support {
+        padding: 0 40px;
+    }
+
+    .info_btn_support:hover {
+        color: rgba(255, 255, 255, 1);
+        background-color: rgba(31, 31, 31, 1);
+        border: 2px solid rgba(31, 31, 31, 1);
+        transition: none;
+    }
+
+    .info_btn_about {
+        padding: 0 42px;
+        border: 2px solid rgba(255, 255, 255, 0.9);
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    .info_btn_about:hover {
+        color: rgba(31, 31, 31, 1);
+        background-color: rgba(255, 255, 255, 0.9);
+        transition: none;
     }
 
     .main__lection {
@@ -1014,7 +1043,9 @@ main {
     }
 
     .main__players {
-        margin: 0 20px 176px 20px;
+        height: 584px;
+        margin: 0 0 100px 0;
+        overflow: hidden;
     }
 
     .main__players_title {
@@ -1025,10 +1056,14 @@ main {
         position: relative;
     }
 
+    .main__players_title_heading {
+        margin-left: 20px;
+    }
+
     .main__players_title_btns {
         position: absolute;
         top: 548px;
-        left: 103px;
+        left: 123px;
         height: 36px;
         width: 129px;
     }
@@ -1040,6 +1075,7 @@ main {
     .main__players_carusel {
         margin-top: 40px;
         height: 388px;
+        width: 375px;        
     }
 
     .main__players_carusel_card {
@@ -1105,35 +1141,6 @@ main {
         width: 335px;
         flex-direction: column;
         gap: 14px;
-    }
-
-    .info_btn_support,
-    .info_btn_about {
-        width: 335px;
-        height: 47px;
-    }
-
-    .info_btn_support {
-        padding: 0 40px;
-    }
-
-    .info_btn_support:hover {
-        color: rgba(255, 255, 255, 1);
-        background-color: rgba(31, 31, 31, 1);
-        border: 2px solid rgba(31, 31, 31, 1);
-        transition: none;
-    }
-
-    .info_btn_about {
-        padding: 0 42px;
-        border: 2px solid rgba(255, 255, 255, 0.9);
-        background-color: rgba(255, 255, 255, 0.9);
-    }
-
-    .info_btn_about:hover {
-        color: rgba(31, 31, 31, 1);
-        background-color: rgba(255, 255, 255, 0.9);
-        transition: none;
     }
 
     .no_players {
