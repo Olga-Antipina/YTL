@@ -538,6 +538,7 @@ main {
     position: absolute;
     top: 28px;
     left: 72px;
+    z-index: 2;
 }
 
 .message__logo {
